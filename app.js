@@ -9,6 +9,15 @@ const game = {
   getBounds: function() {
     this.biggestNum = parseInt(prompt(`Enter your choice for an upper limit`))
     this.smallestNum = parseInt(prompt(`Enter your choice for a  lower limit`))
+    if(this.biggestNum < this.smallestNum){
+      alert(`Oh no! Your lower bound is greater than your upper bound! Please reselect bounds. :)`) 
+      this.getBounds()
+    }
+    if(this.biggestNum === this.smallestNum){
+      alert(`Ooof. Single value range? I DON'T THINK SO COWBOY. Please reselect bounds`)
+      this.getBounds()
+    }
+    
   },
 
   getNum: function() { 
