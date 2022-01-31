@@ -7,13 +7,15 @@ const game = {
   prevGuesses: [],
 
   getBounds: function() {
-    this.biggestNum = prompt(`Enter your choice for an upper limit`)
-    this.smallestNum = prompt(`Enter your choice for a  lower limit`)
+    this.biggestNum = parseInt(prompt(`Enter your choice for an upper limit`))
+    this.smallestNum = parseInt(prompt(`Enter your choice for a  lower limit`))
   },
 
-  getNum: function() {
+  getNum: function() { //why does this not return a value in bounds when I specify bounds... 
+    //alert(`This is biggest: ${this.biggestNum} and smallest: ${this.smallestNum}`)
     this.secretNum = Math.floor(Math.random() * 
-    (this.biggestNum - this.smallestNum + 1)) + this.smallestNum //generate secretNum
+    (this.biggestNum - this.smallestNum + 1)) + this.smallestNum 
+   // alert(`This is rando num ${this.secretNum}`)
   }, 
 
   getGuess: function() {
@@ -29,6 +31,7 @@ const game = {
   
   render: function(){
     let dir = null
+    alert(`This is render secret num ${this.secretNum} and your guess ${this.guess}`)
     if(this.guess === this.secretNum){ //correct guess! 
       alert(`Congrats! You guessed the number in ${this.prevGuesses.length} guesses! Way to go!`)
       return 
@@ -49,7 +52,7 @@ const game = {
   },
 
     play: function() {
-   //  this.getBounds() 
+     this.getBounds() 
      this.getNum()
       do{ 
         this.getGuess()
